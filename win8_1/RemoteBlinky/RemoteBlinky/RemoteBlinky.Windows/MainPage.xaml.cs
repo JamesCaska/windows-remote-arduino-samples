@@ -25,25 +25,49 @@ namespace RemoteBlinky
     public sealed partial class MainPage : Page
     {
         //Usb is not supported on Win8.1. To see the USB connection steps, refer to the win10 solution instead.
-        BluetoothSerial bluetooth;
+        
+        IStream connection;
         RemoteDevice arduino;
-
+        
         public MainPage()
         {
             this.InitializeComponent();
 
-            /*
-             * I've written my bluetooth device name as a parameter to the BluetoothSerial constructor. You should change this to your previously-paired
-             * device name if using Bluetooth. You can also use the BluetoothSerial.listAvailableDevicesAsync() function to list
-             * available devices, but that is not covered in this sample.
-             */
-            bluetooth = new BluetoothSerial("RNBT-E072");
+            bool VBBConnection = true;
 
-            arduino = new RemoteDevice(bluetooth);
-            bluetooth.ConnectionEstablished += OnConnectionEstablished;
+            if( VBBConnection)
+            {
+                /*
+                 * VirtualBreadboard Virtual Firmata device (www.virtualbreadboard.com)
+                 * - is the server, so you must run VBB first
+                 * - connection port 5000 as set in the VBB firmata port property
+                 * - connects using the local IP address, 127.0.0.1
+                 * - You must enable Private Networks ( Cient & Server ) in thePackage : Capabilities manifest
+                 */
+                LocalSerialSocket localSocket = new LocalSerialSocket(5000);
 
-            //these parameters don't matter for bluetooth
-            bluetooth.begin(115200, SerialConfig.SERIAL_8N1);
+                arduino = new RemoteDevice(localSocket);
+                localSocket.ConnectionEstablished += OnConnectionEstablished;
+                connection = localSocket;
+            }
+            else
+            {
+                /*
+               * I've written my bluetooth device name as a parameter to the BluetoothSerial constructor. You should change this to your previously-paired
+               * device name if using Bluetooth. You can also use the BluetoothSerial.listAvailableDevicesAsync() function to list
+               * available devices, but that is not covered in this sample.
+               */
+                BluetoothSerial  bluetooth = new BluetoothSerial("RNBT-E072");
+
+                arduino = new RemoteDevice(bluetooth);
+                bluetooth.ConnectionEstablished += OnConnectionEstablished;
+                connection = bluetooth;
+            }
+
+
+            //these parameters don't matter for localSocket/bluetooth
+            connection.begin(115200, SerialConfig.SERIAL_8N1);
+
         }
 
         private void OnConnectionEstablished()
