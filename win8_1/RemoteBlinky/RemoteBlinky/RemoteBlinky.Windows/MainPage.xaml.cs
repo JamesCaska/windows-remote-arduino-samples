@@ -25,17 +25,19 @@ namespace RemoteBlinky
     public sealed partial class MainPage : Page
     {
         //Usb is not supported on Win8.1. To see the USB connection steps, refer to the win10 solution instead.
-        
+        const bool USE_VBB_CONNECTION  = true;
+        const bool USE_CUSTOM_PROTOCOL = true;
+
         IStream connection;
         RemoteDevice arduino;
-        
+        CustomRemoteProtocol myRemoteProtocol;
+
         public MainPage()
         {
             this.InitializeComponent();
 
-            bool VBBConnection = true;
-
-            if( VBBConnection)
+        
+            if(USE_VBB_CONNECTION)
             {
                 /*
                  * VirtualBreadboard Virtual Firmata device (www.virtualbreadboard.com)
@@ -45,8 +47,16 @@ namespace RemoteBlinky
                  * - You must enable Private Networks ( Cient & Server ) in thePackage : Capabilities manifest
                  */
                 LocalSerialSocket localSocket = new LocalSerialSocket(5000);
+                if (USE_CUSTOM_PROTOCOL)
+                {
+                    myRemoteProtocol = new CustomRemoteProtocol(localSocket);
+                }
+                else
+                {
+                    arduino = new RemoteDevice(localSocket);
+                }
 
-                arduino = new RemoteDevice(localSocket);
+                
                 localSocket.ConnectionEstablished += OnConnectionEstablished;
                 connection = localSocket;
             }
@@ -59,7 +69,15 @@ namespace RemoteBlinky
                */
                 BluetoothSerial  bluetooth = new BluetoothSerial("RNBT-E072");
 
-                arduino = new RemoteDevice(bluetooth);
+                if (USE_CUSTOM_PROTOCOL)
+                {
+                    myRemoteProtocol = new CustomRemoteProtocol(bluetooth);
+                }
+                else
+                {
+                    arduino = new RemoteDevice(bluetooth);
+                }
+                 
                 bluetooth.ConnectionEstablished += OnConnectionEstablished;
                 connection = bluetooth;
             }
@@ -81,14 +99,30 @@ namespace RemoteBlinky
 
         private void OnButton_Click( object sender, RoutedEventArgs e )
         {
-            //turn the LED connected to pin 5 ON
-            arduino.digitalWrite( 5, PinState.HIGH );
+            if (USE_CUSTOM_PROTOCOL)
+            {
+                myRemoteProtocol.LEDOn = true;
+            }
+            else
+            {
+                //turn the LED connected to pin 5 ON
+                arduino.digitalWrite(5, PinState.HIGH);
+            }
+
         }
 
         private void OffButton_Click( object sender, RoutedEventArgs e )
         {
-            //turn the LED connected to pin 5 OFF
-            arduino.digitalWrite( 5, PinState.LOW );
+            if (USE_CUSTOM_PROTOCOL)
+            {
+                myRemoteProtocol.LEDOn = false;
+            }
+            else
+            {
+                //turn the LED connected to pin 5 OFF
+                arduino.digitalWrite(5, PinState.LOW);
+            }
+
         }
     }
 }
