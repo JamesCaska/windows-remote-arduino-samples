@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RemoteBlinky", "RemoteBlinky", "{18567B72-D9CA-4E24-944C-CF8966730626}"
 EndProject
@@ -32,6 +32,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Microsoft.Maker.RemoteWiring.Windows", "..\..\remote-wiring\Microsoft.Maker.win8_1\Microsoft.Maker.RemoteWiring\Microsoft.Maker.RemoteWiring.Windows\Microsoft.Maker.RemoteWiring.Windows.vcxproj", "{67ADAC13-BA28-4CB1-A706-17B0301171F1}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Microsoft.Maker.RemoteWiring.WindowsPhone", "..\..\remote-wiring\Microsoft.Maker.win8_1\Microsoft.Maker.RemoteWiring\Microsoft.Maker.RemoteWiring.WindowsPhone\Microsoft.Maker.RemoteWiring.WindowsPhone.vcxproj", "{2B16A0FE-EA4F-411D-B25E-2FF9605C875B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoteBlinky.WindowsUniversal", "..\..\uwp\RemoteBlinky\RemoteBlinky.WindowsUniversal\RemoteBlinky.WindowsUniversal.csproj", "{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -254,6 +256,38 @@ Global
 		{2B16A0FE-EA4F-411D-B25E-2FF9605C875B}.Release|x64.ActiveCfg = Release|Win32
 		{2B16A0FE-EA4F-411D-B25E-2FF9605C875B}.Release|x86.ActiveCfg = Release|Win32
 		{2B16A0FE-EA4F-411D-B25E-2FF9605C875B}.Release|x86.Build.0 = Release|Win32
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Debug|ARM.ActiveCfg = Debug|ARM
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Debug|ARM.Build.0 = Debug|ARM
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Debug|ARM.Deploy.0 = Debug|ARM
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Debug|Mixed Platforms.Deploy.0 = Debug|x86
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Debug|Win32.ActiveCfg = Debug|x86
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Debug|Win32.Build.0 = Debug|x86
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Debug|Win32.Deploy.0 = Debug|x86
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Debug|x64.ActiveCfg = Debug|x64
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Debug|x64.Build.0 = Debug|x64
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Debug|x64.Deploy.0 = Debug|x64
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Debug|x86.ActiveCfg = Debug|x86
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Debug|x86.Build.0 = Debug|x86
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Debug|x86.Deploy.0 = Debug|x86
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Release|Any CPU.ActiveCfg = Release|x86
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Release|ARM.ActiveCfg = Release|ARM
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Release|ARM.Build.0 = Release|ARM
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Release|ARM.Deploy.0 = Release|ARM
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Release|Mixed Platforms.Build.0 = Release|x86
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Release|Mixed Platforms.Deploy.0 = Release|x86
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Release|Win32.ActiveCfg = Release|x86
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Release|Win32.Build.0 = Release|x86
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Release|Win32.Deploy.0 = Release|x86
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Release|x64.ActiveCfg = Release|x64
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Release|x64.Build.0 = Release|x64
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Release|x64.Deploy.0 = Release|x64
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Release|x86.ActiveCfg = Release|x86
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Release|x86.Build.0 = Release|x86
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -262,5 +296,6 @@ Global
 		{66418108-ECAE-44AC-85AB-D127CF25D1CA} = {18567B72-D9CA-4E24-944C-CF8966730626}
 		{FBA371C2-E063-4538-BED7-8479E7819EFF} = {18567B72-D9CA-4E24-944C-CF8966730626}
 		{6FF69EED-B105-452A-BAFB-BE9FCC44746C} = {18567B72-D9CA-4E24-944C-CF8966730626}
+		{A72333F8-C8F9-4381-A869-D72F3EAB0D5D} = {18567B72-D9CA-4E24-944C-CF8966730626}
 	EndGlobalSection
 EndGlobal
